@@ -6,7 +6,7 @@
 #    By: qhonore <qhonore@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/30 11:30:21 by qhonore           #+#    #+#              #
-#    Updated: 2018/02/21 20:37:37 by qhonore          ###   ########.fr        #
+#    Updated: 2018/02/23 12:57:20 by qhonore          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,22 +14,35 @@ SRC_PATH = ./src/
 OBJ_PATH = ./obj/
 INC_PATH = ./inc/
 
-SRC_NAME = main.cpp
-OBJ_NAME = $(SRC_NAME:.cpp=.o)
-NAME = learning
+SRC_NAME1 = learn.cpp Learn.class.cpp
+OBJ_NAME1 = $(SRC_NAME1:.cpp=.o)
+SRC1 = $(addprefix $(SRC_PATH),$(SRC_NAME1))
+OBJ1 = $(addprefix $(OBJ_PATH),$(OBJ_NAME1))
+NAME1 = learn
 
-SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
-OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
+SRC_NAME2 = estimate.cpp
+OBJ_NAME2 = $(SRC_NAME2:.cpp=.o)
+SRC2 = $(addprefix $(SRC_PATH),$(SRC_NAME2))
+OBJ2 = $(addprefix $(OBJ_PATH),$(OBJ_NAME2))
+NAME2 = estimate
+
 INC = $(addprefix -I,$(INC_PATH))
+
+THETA = theta_data
 
 CC = g++
 CFLAGS = -MMD -pedantic -Wuninitialized -std=c++11
 
 all:
-	@echo "\033[32;44m Make $(NAME) \033[0m"
-	@make $(NAME)
+	@echo "\033[32;44m Make $(NAME1) \033[0m"
+	@make $(NAME1)
+	@echo "\033[32;44m Make $(NAME2) \033[0m"
+	@make $(NAME2)
 
-$(NAME): $(OBJ)
+$(NAME1): $(OBJ1)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(NAME2): $(OBJ2)
 	$(CC) $(CFLAGS) $^ -o $@
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
@@ -37,15 +50,16 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
 	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
 clean:
-	@echo "\033[31;44m Make clean $(NAME) \033[0m"
-	rm -rf $(OBJ) $(OBJ_PATH)
+	@echo "\033[31;44m Make clean $(NAME1) & $(NAME2) \033[0m"
+	rm -rf $(OBJ1) $(OBJ2) $(OBJ_PATH)
 
 fclean: clean
-	@echo "\033[31;44m Make fclean $(NAME) \033[0m"
-	rm -f $(NAME)
+	@echo "\033[31;44m Make fclean $(NAME1) & $(NAME2) \033[0m"
+	rm -f $(NAME1) $(NAME2) $(THETA)
 
 re: fclean all
 
--include $(OBJ:.o=.d)
+-include $(OBJ1:.o=.d)
+-include $(OBJ2:.o=.d)
 
 .PHONY: lib clean fclean re
