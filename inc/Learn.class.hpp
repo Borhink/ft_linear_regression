@@ -6,7 +6,7 @@
 /*   By: qhonore <qhonore@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 12:42:05 by qhonore           #+#    #+#             */
-/*   Updated: 2018/02/23 12:41:03 by qhonore          ###   ########.fr       */
+/*   Updated: 2018/02/23 21:02:30 by qhonore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LEARN_HPP
 
 # include <fstream>
+# include <sstream>
 # include <iostream>
 # include <string>
 # include <regex>
@@ -21,6 +22,7 @@
 # include <cmath>
 # include <unistd.h>
 # include <iomanip>
+# include <SFML/Graphics.hpp>
 
 # define GREEN "\033[32m"
 # define RED "\033[31m"
@@ -28,6 +30,8 @@
 # define MAGENTA "\033[35m"
 # define CYAN "\033[36m"
 # define EOC "\033[0m"
+
+# define WINOFFSET 50
 
 class Learn
 {
@@ -40,6 +44,11 @@ public:
 	bool isNumber(std::string const &str);
 	void parseDatas(char *path);
 	void saveTheta(void);
+
+	void drawText(sf::RenderWindow &window, std::string str, int x, int y, int size);
+	void drawNumber(sf::RenderWindow &window, int nb, int x, int y, int size);
+	void drawGrid(sf::RenderWindow &window);
+	void drawPoints(sf::RenderWindow &window);
 
 	void run(char *path);
 	void avgError(void);
@@ -55,6 +64,10 @@ private:
 	double _errorA;
 	double _errorB;
 	double _avgX;
+	int _winX;
+	int _winY;
+	int _maxX;
+	int _maxY;
 
 };
 

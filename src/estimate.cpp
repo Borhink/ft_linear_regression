@@ -6,7 +6,7 @@
 /*   By: qhonore <qhonore@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:56:50 by qhonore           #+#    #+#             */
-/*   Updated: 2018/02/23 15:25:17 by qhonore          ###   ########.fr       */
+/*   Updated: 2018/02/23 16:26:05 by qhonore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ static double estimatePrice(double x, double a, double b)
 	return (b + (a * x));
 }
 
-static double estimatePriceExpo(double x, double b)
+static double estimatePriceExpo(double x, double a, double b)
 {
-	return (b / (1 + (x * 100 / 500000)));
+	int pivot = 400000;
+
+	return (b / (1 + (x * 100 / pivot * -a)));
 }
 
 int main(int ac, char **av)
@@ -60,7 +62,7 @@ int main(int ac, char **av)
 		if (std::cin.fail())
 			throw std::runtime_error("Bad entry");
 		if (expo)
-			std::cout << "Estimated price : " << estimatePriceExpo(nb, b) << std::endl;
+			std::cout << "Estimated price : " << estimatePriceExpo(nb, a, b) << std::endl;
 		else
 			std::cout << "Estimated price : " << estimatePrice(nb, a, b) << std::endl;
 	}
