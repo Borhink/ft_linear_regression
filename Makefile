@@ -6,7 +6,7 @@
 #    By: qhonore <qhonore@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/30 11:30:21 by qhonore           #+#    #+#              #
-#    Updated: 2018/02/23 17:31:11 by qhonore          ###   ########.fr        #
+#    Updated: 2018/02/23 22:21:33 by qhonore          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ OBJ_PATH = ./obj/
 INC_PATH = ./inc/ ~/.brew/include
 LIB_PATH = ~/.brew/lib
 
-SRC_NAME1 = learn.cpp Learn.class.cpp
+SRC_NAME1 = learn.cpp Learn.class.cpp Draw.Learn.class.cpp
 OBJ_NAME1 = $(SRC_NAME1:.cpp=.o)
 SRC1 = $(addprefix $(SRC_PATH),$(SRC_NAME1))
 OBJ1 = $(addprefix $(OBJ_PATH),$(OBJ_NAME1))
@@ -44,7 +44,6 @@ all:
 	@make $(NAME2)
 
 install:
-	# rm -rf ~/.brew
 	brew update
 	brew upgrade
 	brew install sfml

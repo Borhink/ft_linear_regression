@@ -6,7 +6,7 @@
 /*   By: qhonore <qhonore@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 12:42:05 by qhonore           #+#    #+#             */
-/*   Updated: 2018/02/23 21:02:30 by qhonore          ###   ########.fr       */
+/*   Updated: 2018/02/23 22:45:24 by qhonore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,14 @@ public:
 	void saveTheta(void);
 
 	void drawText(sf::RenderWindow &window, std::string str, int x, int y, int size);
-	void drawNumber(sf::RenderWindow &window, int nb, int x, int y, int size);
+	void drawNumber(sf::RenderWindow &window, double nb, int x, int y, int size);
 	void drawGrid(sf::RenderWindow &window);
 	void drawPoints(sf::RenderWindow &window);
+	void drawUI(sf::RenderWindow &window, int i);
 
-	void run(char *path);
+	int graphicLearning(void);
+	int basicLearngin(void);
+	void run(char *path, bool graphic);
 	void avgError(void);
 	double estimatePrice(double x, double a, double b);
 

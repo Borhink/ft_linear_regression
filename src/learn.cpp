@@ -6,7 +6,7 @@
 /*   By: qhonore <qhonore@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:56:50 by qhonore           #+#    #+#             */
-/*   Updated: 2018/02/23 17:21:14 by qhonore          ###   ########.fr       */
+/*   Updated: 2018/02/23 22:45:48 by qhonore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ int main(int ac, char **av)
 	Learn learn;
 
 	if (ac >= 2)
-		learn.run(av[1]);
+		learn.run(av[1], true);
 	return (0);
 }
