@@ -6,7 +6,7 @@
 /*   By: qhonore <qhonore@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 12:43:45 by qhonore           #+#    #+#             */
-/*   Updated: 2018/02/23 22:44:51 by qhonore          ###   ########.fr       */
+/*   Updated: 2018/02/27 16:05:10 by qhonore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,15 @@ void Learn::run(char *path, bool graphic)
 {
 	int i;
 
-	parseDatas(path);
+	try
+	{
+		parseDatas(path);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << RED << e.what() << EOC << std::endl;
+		return;
+	}
 	if (graphic)
 		i = graphicLearning();
 	else
